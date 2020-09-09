@@ -3,7 +3,7 @@
 This project uses git submodules to include the google test repository.
 
 ```
-git clone --recursive git@github.com:mlovatonv/lru-cache.git
+git clone --recursive git@github.com:mlovatonv/lrucache.git
 ```
 
 ## Build and test
