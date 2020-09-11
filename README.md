@@ -17,14 +17,14 @@ LRU Cache is a cache algorithm that holds items in the order of its last access,
 Inserting a key-value pair involves various steps.
 
 ```
-if (this->size == this->max_size) {
+if (this->size == this->max_size and this->get_value_from_key(key) == nullptr) {
   this->evict();
-}
-if (this->get_value_from_key(key) == nullptr) {
-  ++this->size;
   this->insert(key, value);
-} else {
+} else if (this->get_value_from_key(key) != nullptr) {
   this->update(key, value);
+} else {
+  this->insert(key, value);
+  ++this->size;
 }
 ```
 
