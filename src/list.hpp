@@ -9,7 +9,10 @@ class list {
     t_content content;
     node* next;
     node* prev;
-  } private : node* head;
+  };
+
+ private:
+  node* head;
   node* tail;
 
  public:

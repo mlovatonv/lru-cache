@@ -5,12 +5,12 @@
 namespace ads {
 
 template <typename t_content>
-list<t_content>::node* list<t_content>::front() {
+typename list<t_content>::node* list<t_content>::front() {
   return this->head;
 }
 
 template <typename t_content>
-list<t_content>::node* list<t_content>::back() {
+typename list<t_content>::node* list<t_content>::back() {
   return this->tail;
 }
 
@@ -29,7 +29,7 @@ void list<t_content>::push_back(t_content content) {
   list<t_content>::node* old_tail = this->tail;
   this->tail = new_tail;
   new_tail->prev = old_tail;
-  old_tail->next = new_node;
+  old_tail->next = new_tail;
 }
 
 template <typename t_content>

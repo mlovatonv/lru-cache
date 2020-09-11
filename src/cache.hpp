@@ -1,5 +1,7 @@
 #pragma once
 
+#define size_t unsigned
+
 namespace ads {
 
 template <typename t_key, typename t_value>
