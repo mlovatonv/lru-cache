@@ -19,8 +19,10 @@ void list<t_content>::pop_front() {
   if (!this->head) return;
   list<t_content>::node* old_head = this->head;
   this->head = this->head->next;
-  if (this->head) this->head->prev = nullptr;
-  else this->tail = nullptr;
+  if (this->head)
+    this->head->prev = nullptr;
+  else
+    this->tail = nullptr;
   delete old_head;
 }
 

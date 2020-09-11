@@ -11,11 +11,7 @@ git clone --recursive git@github.com:mlovatonv/lrucache.git
 On Linux\Unix:
 
 ```
-mkdir build
-cd build
-cmake ..
-make
-make test
+./build.sh
 ```
 
 On Windows:
