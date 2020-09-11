@@ -3,7 +3,46 @@
 
 #include <lrucache.cpp>
 
-TEST(lrucachetest, should_work) {
+TEST(lrucachetest, list_should_work) {
+  using namespace ads;
+  list<int> l;
+
+  l.push_back(1);
+  l.push_back(2);
+  l.push_back(3);
+
+  EXPECT_EQ(l.front()->content, 1);
+  EXPECT_EQ(l.front()->prev, nullptr);
+  EXPECT_EQ(l.back()->content, 3);
+  EXPECT_EQ(l.back()->next, nullptr);
+
+  l.pop_front();
+
+  EXPECT_EQ(l.front()->content, 2);
+  EXPECT_EQ(l.front()->next, l.back());
+  EXPECT_EQ(l.front()->prev, nullptr);
+  EXPECT_EQ(l.back()->content, 3);
+  EXPECT_EQ(l.back()->next, nullptr);
+  EXPECT_EQ(l.back()->prev, l.front());
+
+  l.move_back(l.front());
+
+  EXPECT_EQ(l.front()->content, 3);
+  EXPECT_EQ(l.front()->next, l.back());
+  EXPECT_EQ(l.front()->prev, nullptr);
+  EXPECT_EQ(l.back()->content, 2);
+  EXPECT_EQ(l.back()->next, nullptr);
+  EXPECT_EQ(l.back()->prev, l.front());
+
+  l.pop_front();
+  l.pop_front();
+  // l.pop_front(); // extra pop_front
+
+  EXPECT_EQ(l.front(), nullptr);
+  EXPECT_EQ(l.back(), nullptr);
+}
+
+TEST(lrucachetest, lrucache_should_work) {
   using namespace ads;
   lrucache<char, int> lc(3);
 
