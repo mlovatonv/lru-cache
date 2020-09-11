@@ -9,3 +9,4 @@ compile_commands.json
 CMakeSettings.json
 CTestTestfile.cmake
 build/
+a.out
