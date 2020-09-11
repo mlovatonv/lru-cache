@@ -12,8 +12,8 @@ class list {
   };
 
  private:
-  node* head;
-  node* tail;
+  node* head = nullptr;
+  node* tail = nullptr;
 
  public:
   node* front();
