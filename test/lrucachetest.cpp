@@ -57,16 +57,28 @@ TEST(lrucachetest, lrucache_should_work) {
   lc.insert_key_value_pair('d', 4);
 
   EXPECT_EQ(lc.get_value_from_key('b'), nullptr);
-
+  EXPECT_EQ(*lc.get_value_from_key('a'), 1);
+  EXPECT_EQ(*lc.get_value_from_key('d'), 4);
+  EXPECT_EQ(*lc.get_value_from_key('c'), 3);
+  
   lc.insert_key_value_pair('a', 5);
 
   EXPECT_EQ(*lc.get_value_from_key('a'), 5);
-  
+  EXPECT_EQ(*lc.get_value_from_key('d'), 4);
+  EXPECT_EQ(*lc.get_value_from_key('c'), 3);
+
   lc.insert_key_value_pair('x', 9);
   lc.insert_key_value_pair('a', 6);
   lc.insert_key_value_pair('z', 3);
 
-  EXPECT_EQ(lc.get_value_from_key('c'), nullptr);
   EXPECT_EQ(*lc.get_most_recent_key(), 'z');
+  EXPECT_EQ(lc.get_value_from_key('b'), nullptr);
+  EXPECT_EQ(lc.get_value_from_key('c'), nullptr);
+  EXPECT_EQ(lc.get_value_from_key('d'), nullptr);
+  EXPECT_EQ(*lc.get_most_recent_key(), 'z');
+  
   EXPECT_EQ(*lc.get_value_from_key('a'), 6);
+  EXPECT_EQ(*lc.get_value_from_key('z'), 3);
+  EXPECT_EQ(*lc.get_value_from_key('x'), 9);
+  EXPECT_EQ(*lc.get_most_recent_key(), 'x');
 }
